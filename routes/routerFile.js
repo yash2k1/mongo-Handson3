@@ -1,0 +1,10 @@
+const express =require("express")
+const router=express.Router()
+const {Q2ndAddNewUser, Q3ndAddNewUser, Q6ndAddNewUser,Q7ndAddNewUser, Q5ndAddNewUser, Q4ndAddNewUser}=require('../Controller/userController')
+router.post("/question2",Q2ndAddNewUser)
+router.get("/question3",Q3ndAddNewUser)
+router.get("/question4",Q4ndAddNewUser)
+router.get("/question5",Q5ndAddNewUser)
+router.post("/question6",Q6ndAddNewUser)
+router.delete("/question7",Q7ndAddNewUser)
+module.exports=router;
