@@ -1,14 +1,11 @@
-const client =require("../db/connection")
-const db=client.db("Human_Resource");
-const collection=db.collection("employee");
+const collection=require('../model/employeeModel');
+
 //create
 async function Q2ndAddNewUser(req,res){
    try{
-  const data=await collection.insertMany([
+  const data=await collection.create([
     {
-        "_id": {
-            "$oid": "61cc5034af6ba4fcb54e8c38"
-        },
+       
         "firstName": "John",
         "lastName": "Doe",
         "salary": "25000",
@@ -21,9 +18,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc522daf6ba4fcb54e8c3a"
-        },
+       
         "firstName": "Rohan",
         "lastName": "Jame",
         "salary": "30000",
@@ -36,9 +31,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc522daf6ba4fcb54e8c3b"
-        },
+       
         "firstName": "Jame",
         "lastName": "Doe",
         "salary": "35000",
@@ -51,9 +44,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "ECE"
     },
     {
-        "_id": {
-            "$oid": "61cc522daf6ba4fcb54e8c3c"
-        },
+        
         "firstName": "Sao",
         "lastName": "Avika",
         "salary": "30000",
@@ -66,9 +57,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc522daf6ba4fcb54e8c3d"
-        },
+        
         "firstName": "Jame",
         "lastName": "roh",
         "salary": "35000",
@@ -81,9 +70,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "EEE"
     },
     {
-        "_id": {
-            "$oid": "61cc533baf6ba4fcb54e8c3e"
-        },
+        
         "firstName": "Rohan",
         "lastName": "Jame",
         "salary": "30000",
@@ -96,9 +83,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc533baf6ba4fcb54e8c3f"
-        },
+      
         "firstName": "Jame",
         "lastName": "Doe",
         "salary": "35000",
@@ -111,9 +96,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "ECE"
     },
     {
-        "_id": {
-            "$oid": "61cc533baf6ba4fcb54e8c40"
-        },
+        
         "firstName": "Sao",
         "lastName": "Avika",
         "salary": "30000",
@@ -126,9 +109,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc533baf6ba4fcb54e8c41"
-        },
+    
         "firstName": "Jame",
         "lastName": "Doe",
         "salary": "35000",
@@ -141,9 +122,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "EEE"
     },
     {
-        "_id": {
-            "$oid": "61cc5515af6ba4fcb54e8c42"
-        },
+       
         "firstName": "Rohan",
         "lastName": "Jame",
         "salary": "30000",
@@ -156,9 +135,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc5515af6ba4fcb54e8c43"
-        },
+    
         "firstName": "Jame",
         "lastName": "Doe",
         "salary": "35000",
@@ -171,9 +148,7 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "ECE"
     },
     {
-        "_id": {
-            "$oid": "61cc5515af6ba4fcb54e8c44"
-        },
+
         "firstName": "Sao",
         "lastName": "Avika",
         "salary": "30000",
@@ -186,9 +161,6 @@ async function Q2ndAddNewUser(req,res){
         "gradStream": "CSE"
     },
     {
-        "_id": {
-            "$oid": "61cc5515af6ba4fcb54e8c45"
-        },
         "firstName": "Jame",
         "lastName": "Doe",
         "salary": "35000",
@@ -202,11 +174,11 @@ async function Q2ndAddNewUser(req,res){
     }
 ]);
        console.log({msg:"inserted",userData:data});
-       res.status(200).send("inserted");
+     return  res.status(200).send("inserted");
      
  }
     catch(err){
-        res.status(500).send("err"+err);
+      return  res.status(500).send("err"+err);
         
     }
 }

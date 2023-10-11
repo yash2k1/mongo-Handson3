@@ -1,31 +1,28 @@
 const express=require("express");
 const cors=require("cors");
 const dotenv=require("dotenv");
-const productData=require('./Asset/productData');
+const connectToDb=require("./db/connection");
+const routerFile =require("./routes/routerFile")
 const app=express();
-const client=require("./db/connection");
-const route = require("./routes/routerFile");
-app.use(express.json());
-async function dbConect(){
+
+dotenv.config();
+app.use(cors({
+    origin:"*"
+}));
+app.use(express.json())
+
+app.use("/",routerFile)
+
+const connectFunc=async()=>{
 try{
-await client.connect();
-console.log("done")
+    connectToDb();
+    app.listen(process.env.PORT,()=>{
+        console.log(`your server is live on ${process.env.PORT}`);
+    });
 }
 catch(err){
-console.log("not done",err)
+    if(err)console.log(err)
 }
-}
-dbConect();
-app.use(cors({
-    origin:"*",
-}))
-app.use("/route",route);
-dotenv.config();
 
-const PORT=process.env.PORT||3040;
-app.get("/",(req,res)=>{
-    res.send(productData)
-});
-app.listen(PORT,()=>{
-    console.log(`you are live at ${PORT}`)
-})
+}
+connectFunc();
